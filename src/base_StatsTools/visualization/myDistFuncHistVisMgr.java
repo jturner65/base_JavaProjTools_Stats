@@ -50,28 +50,36 @@ public class myDistFuncHistVisMgr extends baseVisMgr {
 		}
 	}
 	
-	//set the current strings to display for multi disp
+	/**
+	 * set the current strings to display for multi disp
+	 * @param _distStrList
+	 * @param _minMaxDiff
+	 */
 	public void setCurMultiDispVis(String[] _distStrList, double[][] _minMaxDiff) {
 		specifiedPlots = _distStrList;
 		if(_minMaxDiff != null) {
 			for(String key : specifiedPlots) {	
 				if(key.equals(histKey)) {continue;}
-				distVisObjs.get(key).setMinMaxDiffVals(_minMaxDiff);	
-				
+				distVisObjs.get(key).setMinMaxDiffVals(_minMaxDiff);
 			}
 		}
 		showSpecifiedPlots = true;	
 	}//setCurDispVis
-	//clear out list of multi-dist plots to show, and turn off function
+	/**
+	 * clear out list of multi-dist plots to show, and turn off function
+	 */
 	public void clearCurDispVis() {
 		specifiedPlots = new String[0];
 		showSpecifiedPlots = false;			
 	}//clearCurDispVis
 	
-//
-	//set function and display values from randGen; scale function values to properly display in frame
-	//_funcVals : x and y values of function to be plotted; 
-	//_minMaxDiffFuncVals : min, max, diff y values of function to be plotted, for scaling
+	/**
+	 * set function and display values from randGen; scale function values to properly display in frame 
+	 * @param _funcKey
+	 * @param dispClrs
+	 * @param _funcVals : x and y values of function to be plotted
+	 * @param _minMaxDiffFuncVals : min, max, diff y values of function to be plotted, for scaling
+	 */
 	public void setValuesFunc(String _funcKey, int[][] dispClrs, double[][] _funcVals, double[][] _minMaxDiffFuncVals) {
 		funcKey = _funcKey;
 		baseDistVisObj funcObj = distVisObjs.get(funcKey);
@@ -91,9 +99,13 @@ public class myDistFuncHistVisMgr extends baseVisMgr {
 		}
 	}
 	
-	//set values to display a distribution result - display histogram
-	//_bucketVals : n buckets(1st idx); idx2 : idx 0 is lower x value of bucket, y value is count; last entry should always have 0 count
-	//_minMaxFuncVals : 1st array is x min,max, diff; 2nd array is y axis min, max, diff
+	/**
+	 * set values to display a distribution result - display histogram 
+	 * @param _histKey
+	 * @param dispClrs
+	 * @param _bucketVals : n buckets(1st idx)
+	 * @param _minMaxDiffHistVals : 1st array is x min,max, diff; 2nd array is y axis min, max, diff
+	 */
 	public void setValuesHist(String _histKey, int[][] dispClrs, double[][] _bucketVals, double[][] _minMaxDiffHistVals) {
 		histKey = _histKey;
 		baseDistVisObj histObj = distVisObjs.get(histKey);
@@ -104,7 +116,10 @@ public class myDistFuncHistVisMgr extends baseVisMgr {
 		setIsVisible(true);
 	}//setValuesHist
 	
-	//clear precalced values for visualization
+	/**
+	 * clear precalced values for visualization
+	 */
+	@Override
 	public void clearEvalVals() {
 		System.out.println("clearEvalVals called");
 		for (String key : distVisObjs.keySet()) {distVisObjs.get(key).clearEvalVals();}

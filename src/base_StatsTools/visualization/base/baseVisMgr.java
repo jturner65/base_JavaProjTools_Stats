@@ -41,8 +41,15 @@ public abstract class baseVisMgr {
 		setDispWidth(startRect[2]);
 	}//ctor
 	
-	//check if mouse has been clicked within the bounds of this visualization, and move the frame of the mouse click location to be the upper left corner of this object's clickable region
-	public boolean checkMouseClick(int msx, int msy, int btn) {
+	/**
+	 * check if mouse has been clicked within the bounds of this visualization, and move the 
+	 * frame of the mouse click location to be the upper left corner of this object's clickable region
+	 * @param msx
+	 * @param msy
+	 * @param btn
+	 * @return
+	 */
+	public final boolean checkMouseClick(int msx, int msy, int btn) {
 		if(!getFlag(isVisibleIDX)) {return false;}
 		//transform to top left corner of box region
 		int msXLoc = (int) (msx - startRect[0]), mxYLoc = (int) (msy - startRect[1]);
@@ -52,8 +59,15 @@ public abstract class baseVisMgr {
 		return _mouseClickIndiv(msXLoc, mxYLoc, btn);
 	}//checkMouseClick
 	
-	//specifically if moved or dragged within the bounds of this visualization, and move the frame of the mouse current drag location to be the upper left corner of this object's clickable region
-	//drag has btn > 0, mouse-over has button < 0
+	/**
+	 * specifically if moved or dragged within the bounds of this visualization, and move the 
+	 * frame of the mouse current drag location to be the upper left corner of this object's 
+	 * clickable region drag has btn > 0, mouse-over has button < 0
+	 * @param msx
+	 * @param msy
+	 * @param btn
+	 * @return
+	 */
 	public boolean checkMouseMoveDrag(int msx, int msy, int btn) {
 		if(!getFlag(isVisibleIDX)) {return false;}
 		//transform to top left corner of box region
@@ -68,18 +82,24 @@ public abstract class baseVisMgr {
 		return _mouseDragIndiv(msXLoc, mxYLoc, btn);
 	}//checkMouseMoveDrag
 	
-	//modify name to reflect changes in underlying data/distribution
-	public void updateName(String _newName) {
-		name = _newName;
-	}
+	/**
+	 * modify name to reflect changes in underlying data/distribution
+	 * @param _newName
+	 */
+	public void updateName(String _newName) {name = _newName;}
 	
-	//functionality when mouse is released
+	/**
+	 * functionality when mouse is released
+	 */
 	public void mouseRelease(){
 		//any base class functions for release
 		_mouseReleaseIndiv();
 	}//mouseRelease
 	
-	//set visible display width
+	/**
+	 * set visible display width
+	 * @param _dispWidth
+	 */
 	public void setDispWidth(float _dispWidth) {		
 		startRect[2] = _dispWidth;	
 		_setDispWidthIndiv(_dispWidth);
@@ -92,6 +112,8 @@ public abstract class baseVisMgr {
 	protected abstract void _mouseReleaseIndiv();
 	protected abstract void _setDispWidthIndiv(float dispWidth);
 	
+	public abstract void clearEvalVals();
+
 	public void drawVis(IRenderInterface pa) {
 		if(!getFlag(isVisibleIDX)) {return;}
 		pa.pushMatState();
@@ -107,8 +129,8 @@ public abstract class baseVisMgr {
 	public void setIsVisible(boolean _isVis) {setFlag(isVisibleIDX, _isVis);}
 	
 	private void initFlags(){stFlags = new int[1 + numStFlags/32]; for(int i = 0; i<numStFlags; ++i){setFlag(i,false);}}
-	public void setAllFlags(int[] idxs, boolean val) {for (int idx : idxs) {setFlag(idx, val);}}
-	public void setFlag(int idx, boolean val){
+	public final void setAllFlags(int[] idxs, boolean val) {for (int idx : idxs) {setFlag(idx, val);}}
+	public final void setFlag(int idx, boolean val){
 		int flIDX = idx/32, mask = 1<<(idx%32);
 		stFlags[flIDX] = (val ?  stFlags[flIDX] | mask : stFlags[flIDX] & ~mask);
 		switch (idx) {//special actions for each flag 
@@ -118,7 +140,8 @@ public abstract class baseVisMgr {
 				break;}				
 		}
 	}//setFlag		
-	public boolean getFlag(int idx){int bitLoc = 1<<(idx%32);return (stFlags[idx/32] & bitLoc) == bitLoc;}
+	public final boolean getFlag(int idx){int bitLoc = 1<<(idx%32);return (stFlags[idx/32] & bitLoc) == bitLoc;}
+
 }//class myDistributionDisplay
 
 
