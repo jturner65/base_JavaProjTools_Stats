@@ -31,8 +31,8 @@ public class myDistFuncHistVisMgr extends baseVisMgr {
 	//string keys representing current function and hist keys for plots to show
 	private String funcKey, histKey;
 	
-	public myDistFuncHistVisMgr(float[] _dims, String _name) {
-		super(new float[] {_dims[0],_dims[1],_dims[2], _dims[3]},"Vis of " + _name);
+	public myDistFuncHistVisMgr(IRenderInterface _pa, float[] _dims, String _name) {
+		super(_pa, new float[] {_dims[0],_dims[1],_dims[2], _dims[3]},"Vis of " + _name);
 		initDistVisObjs();		
 		setGraphFrameDims();
 		
@@ -166,7 +166,7 @@ public class myDistFuncHistVisMgr extends baseVisMgr {
 	}
 		
 	@Override
-	public void _drawVisIndiv(IRenderInterface pa) {
+	public void _drawVisIndiv() {
 		pa.setColorValFill(IRenderInterface.gui_Black,255);
 		pa.setColorValStroke(IRenderInterface.gui_White,255);
 	

@@ -10,6 +10,7 @@ import base_JavaProjTools_IRender.base_Render_Interface.IRenderInterface;
  *
  */
 public abstract class baseVisMgr {
+	public static IRenderInterface pa;
 	//owning probability experiment
 	public final int ObjID;
 	private static int IDCnt = 0;
@@ -35,8 +36,9 @@ public abstract class baseVisMgr {
 			clr_grey = new int[] {100,100,100,255};	
 	
 	
-	public baseVisMgr(float[] _startRect, String _name) {
-		ObjID = IDCnt++; startRect = _startRect;name=_name;
+	public baseVisMgr(IRenderInterface _pa,float[] _startRect, String _name) {
+		pa = _pa;ObjID = IDCnt++; startRect = _startRect;name=_name;
+		System.out.println("baseVisMgr : ctor : Name : "+name+"|pa is null : "+(pa == null));
 		initFlags();
 		setDispWidth(startRect[2]);
 	}//ctor
@@ -114,17 +116,17 @@ public abstract class baseVisMgr {
 	
 	public abstract void clearEvalVals();
 
-	public void drawVis(IRenderInterface pa) {
+	public void drawVis() {
 		if(!getFlag(isVisibleIDX)) {return;}
 		pa.pushMatState();
 		pa.translate(startRect[0], startRect[1],0);
 		pa.setFill(clr_white, clr_white[3]);
 		pa.showText(name, 0, 0);
-		_drawVisIndiv(pa);
+		_drawVisIndiv();
 		pa.popMatState();			
 	}//drawVis
 	
-	protected abstract void _drawVisIndiv(IRenderInterface pa);
+	protected abstract void _drawVisIndiv();
 	
 	public void setIsVisible(boolean _isVis) {setFlag(isVisibleIDX, _isVis);}
 	
