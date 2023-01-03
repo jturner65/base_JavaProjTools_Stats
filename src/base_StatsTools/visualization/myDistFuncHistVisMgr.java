@@ -2,7 +2,7 @@ package base_StatsTools.visualization;
 
 import java.util.TreeMap;
 
-import base_JavaProjTools_IRender.base_Render_Interface.IRenderInterface;
+import base_Render_Interface.IRenderInterface;
 import base_StatsTools.visualization.base.baseVisMgr;
 import base_StatsTools.visualization.visObj.myFuncVisObj;
 import base_StatsTools.visualization.visObj.myHistVisObj;

@@ -1,6 +1,6 @@
 package base_StatsTools.visualization.base;
 
-import base_JavaProjTools_IRender.base_Render_Interface.IRenderInterface;
+import base_Render_Interface.IRenderInterface;
 
 /**
  * this class will provide I/O functionality for graphical representations of distributions

@@ -1,6 +1,6 @@
 package base_StatsTools.visualization.visObj;
 
-import base_JavaProjTools_IRender.base_Render_Interface.IRenderInterface;
+import base_Render_Interface.IRenderInterface;
 import base_StatsTools.visualization.myDistFuncHistVisMgr;
 import base_StatsTools.visualization.visObj.base.baseDistVisObj;
 

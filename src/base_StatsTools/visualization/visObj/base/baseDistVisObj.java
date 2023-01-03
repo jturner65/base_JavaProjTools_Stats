@@ -1,11 +1,11 @@
 package base_StatsTools.visualization.visObj.base;
 
-import base_JavaProjTools_IRender.base_Render_Interface.IRenderInterface;
+import base_Render_Interface.IRenderInterface;
 import base_StatsTools.visualization.myDistFuncHistVisMgr;
 
 /**
  * manage the visualization of a single distribution evaluation, either a histogram or a functional evaluation
- * @author 7strb
+ * @author John Turner
  *
  */
 public abstract class baseDistVisObj{

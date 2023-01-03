@@ -3,7 +3,7 @@ package base_StatsTools.analysis.base;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-import base_JavaProjTools_IRender.base_Render_Interface.IRenderInterface;
+import base_Render_Interface.IRenderInterface;
 import base_StatsTools.summary.myProbSummary_ptOrVec;
 import base_StatsTools.summary.base.baseProbSummary;
 

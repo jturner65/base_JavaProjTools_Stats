@@ -1,13 +1,13 @@
 package base_StatsTools.visualization.visObj;
 
-import base_JavaProjTools_IRender.base_Render_Interface.IRenderInterface;
+import base_Render_Interface.IRenderInterface;
 import base_StatsTools.visualization.myDistFuncHistVisMgr;
 import base_StatsTools.visualization.visObj.base.baseDistVisObj;
 
  
 /**
  * visualize a functional object evaluation - draws a line
- * @author 7strb
+ * @author John Turner
  *
  */
 public class myFuncVisObj extends baseDistVisObj{
