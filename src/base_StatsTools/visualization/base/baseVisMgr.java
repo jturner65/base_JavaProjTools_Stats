@@ -38,7 +38,6 @@ public abstract class baseVisMgr {
 	
 	public baseVisMgr(IRenderInterface _pa,float[] _startRect, String _name) {
 		pa = _pa;ObjID = IDCnt++; startRect = _startRect;name=_name;
-		System.out.println("baseVisMgr : ctor : Name : "+name+"|pa is null : "+(pa == null));
 		initFlags();
 		setDispWidth(startRect[2]);
 	}//ctor
