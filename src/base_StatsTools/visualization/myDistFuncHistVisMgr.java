@@ -167,24 +167,24 @@ public class myDistFuncHistVisMgr extends baseVisMgr {
 		
 	@Override
 	public void _drawVisIndiv() {
-		pa.setColorValFill(IRenderInterface.gui_Black,255);
-		pa.setColorValStroke(IRenderInterface.gui_White,255);
+		ri.setColorValFill(IRenderInterface.gui_Black,255);
+		ri.setColorValStroke(IRenderInterface.gui_White,255);
 	
 		//draw box around graph area
-		pa.drawRect(frameDims);
-		pa.pushMatState();
-		pa.translate(frameDims[0],frameDims[1]+frameDims[3], 0.0f);
-		//pa.sphere(3.0f);	
+		ri.drawRect(frameDims);
+		ri.pushMatState();
+		ri.translate(frameDims[0],frameDims[1]+frameDims[3], 0.0f);
+		//ri.sphere(3.0f);	
 		if(showSpecifiedPlots) {
-			for(String key : specifiedPlots) {			distVisObjs.get(key).drawMe(pa, true);		}
+			for(String key : specifiedPlots) {			distVisObjs.get(key).drawMe(ri, true);		}
 //			float _yLocOfXZero = baseObj.zeroAxisVals[0], _xLocOfYZero = baseObj.zeroAxisVals[1];
-//			for(String key : specifiedPlots) {distVisObjs.get(key).drawMeAligned(pa, _yLocOfXZero, _xLocOfYZero);}
+//			for(String key : specifiedPlots) {distVisObjs.get(key).drawMeAligned(ri, _yLocOfXZero, _xLocOfYZero);}
 			
 		} 
-		else if (showHist) {			distVisObjs.get(histKey).drawMe(pa, false);			} 
-		else {							distVisObjs.get(funcKey).drawMe(pa, false);		}
+		else if (showHist) {			distVisObjs.get(histKey).drawMe(ri, false);			} 
+		else {							distVisObjs.get(funcKey).drawMe(ri, false);		}
 
-		pa.popMatState();
+		ri.popMatState();
 	}//_drawVisIndiv
 	
 	public float[] getFrameDims() {return frameDims;}

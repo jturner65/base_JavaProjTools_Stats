@@ -55,37 +55,37 @@ public class floatTrajAnalyzer extends baseAnalyzer {
 	}//analyzeAreaTrajectory
 
 	@Override
-	protected void drawSingleSummary(IRenderInterface pa, String[] mmntDispLabels, baseProbSummary smryRaw, float txtLineYDisp, float ltrMult) {
+	protected void drawSingleSummary(IRenderInterface ri, String[] mmntDispLabels, baseProbSummary smryRaw, float txtLineYDisp, float ltrMult) {
 		myProbSummary_Flts smry = ((myProbSummary_Flts)smryRaw);
 		TreeMap<String,String> smryStrings = smry.summaryStringAra("A");
-		pa.pushMatState();
-		showOffsetText_RightSideMenu(pa,pa.getClr(IRenderInterface.gui_Black, 255), ltrMult*.3f, smryStrings.get("summaryName"));
+		ri.pushMatState();
+		showOffsetText_RightSideMenu(ri,ri.getClr(IRenderInterface.gui_Black, 255), ltrMult*.3f, smryStrings.get("summaryName"));
 		for(int i=0;i<mmntDispLabels.length;++i) {
-			showOffsetText_RightSideMenuAbs(pa, pa.getClr(IRenderInterface.gui_DarkBlue, 255), ltrMult*3.5f, smryStrings.get(mmntDispLabels[i]));
+			showOffsetText_RightSideMenuAbs(ri, ri.getClr(IRenderInterface.gui_DarkBlue, 255), ltrMult*3.5f, smryStrings.get(mmntDispLabels[i]));
 		}			
-		pa.popMatState();
-		pa.translate(0.0f,txtLineYDisp,0.0f);	
+		ri.popMatState();
+		ri.translate(0.0f,txtLineYDisp,0.0f);	
 		
 	}//drawSingleSummary
 	protected int[] trajClr = new int[] {255,255,255,255};
 	@Override
-	protected final void drawSingleSmryGraph(IRenderInterface pa, String[] mmntDispLabels, int smryIdx, float[] graphRect, float ltrMult)  {
+	protected final void drawSingleSmryGraph(IRenderInterface ri, String[] mmntDispLabels, int smryIdx, float[] graphRect, float ltrMult)  {
 		float[] perSmry_Traj = perSummaryScaledValTrajs[smryIdx], perSmry_MinMax = perSummaryMinMax[smryIdx];
 		float widthPerElem = graphRect[2]/(1.0f*perSmry_Traj.length);
 		
-		pa.pushMatState();			
-		//drawSingleTraj(IRenderInterface pa, int[] clr, float[] trajRect, float[] minMax, float[] trajElems, float widthPerElem)
-		drawSingleTraj(pa, trajClr, graphRect, perSmry_MinMax, perSmry_Traj,widthPerElem);
-		pa.popMatState();
+		ri.pushMatState();			
+		//drawSingleTraj(IRenderInterface ri, int[] clr, float[] trajRect, float[] minMax, float[] trajElems, float widthPerElem)
+		drawSingleTraj(ri, trajClr, graphRect, perSmry_MinMax, perSmry_Traj,widthPerElem);
+		ri.popMatState();
 		
 		
-		pa.translate(0.0f,graphRect[3],0.0f);				//draw all these lines on each other
+		ri.translate(0.0f,graphRect[3],0.0f);				//draw all these lines on each other
 	}
 	@Override
-	protected final void drawSingleSmryGraphMinMaxLbls(IRenderInterface pa, int smryIdx, float ltrMult) {
+	protected final void drawSingleSmryGraphMinMaxLbls(IRenderInterface ri, int smryIdx, float ltrMult) {
 		float[] perSmry_MinMax = perSummaryMinMax[smryIdx];
-		//(IRenderInterface pa, int clrLabel, String txt, float ltrMult)
-		drawSingleMinMaxTxt(pa, IRenderInterface.gui_Black, "Min/Max ["+ String.format(frmtStr,perSmry_MinMax[0])+", " + String.format(frmtStr,perSmry_MinMax[1])+"]",ltrMult);
+		//(IRenderInterface ri, int clrLabel, String txt, float ltrMult)
+		drawSingleMinMaxTxt(ri, IRenderInterface.gui_Black, "Min/Max ["+ String.format(frmtStr,perSmry_MinMax[0])+", " + String.format(frmtStr,perSmry_MinMax[1])+"]",ltrMult);
 		
 	}
 

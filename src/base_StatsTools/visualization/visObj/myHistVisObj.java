@@ -11,11 +11,11 @@ public class myHistVisObj extends baseDistVisObj{
 		super(_owner, _clrs);
 	}
 	
-	protected void _drawCurve(IRenderInterface pa, float offset) {
+	protected void _drawCurve(IRenderInterface ri, float offset) {
 		for (int idx = 0; idx <dispVals.length-1;++idx) {	
-			pa.drawRect(dispVals[idx][0], 0, (dispVals[idx+1][0]-dispVals[idx][0]), dispVals[idx][1]);			
+			ri.drawRect(dispVals[idx][0], 0, (dispVals[idx+1][0]-dispVals[idx][0]), dispVals[idx][1]);			
 		}		
-		drawAxes(pa, offset);
+		drawAxes(ri, offset);
 	}//_drawCurve
 
 	

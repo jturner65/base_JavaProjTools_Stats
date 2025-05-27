@@ -122,88 +122,88 @@ public abstract class baseDistVisObj{
 	// drawing routines
 
 	//draw axis lines through 0,0 and give tags
-	private void _drawZeroLines(IRenderInterface pa) {
-		pa.pushMatState();
-		pa.setStrokeWt(2.0f);
-		pa.setColorValFill(IRenderInterface.gui_Cyan,255);
+	private void _drawZeroLines(IRenderInterface ri) {
+		ri.pushMatState();
+		ri.setStrokeWt(2.0f);
+		ri.setColorValFill(IRenderInterface.gui_Cyan,255);
 		if (drawZeroAxes[0]) {//draw x==0 axis
 			float yVal = zeroAxisVals[0];
 			//draw line @ y Val
-			pa.setColorValStroke(IRenderInterface.gui_White,255);
-			pa.drawLine(-tic, yVal, 0, tic, yVal, 0);
+			ri.setColorValStroke(IRenderInterface.gui_White,255);
+			ri.drawLine(-tic, yVal, 0, tic, yVal, 0);
 			//draw line to other side
-			pa.setColorValStroke(IRenderInterface.gui_Cyan,255);
-			pa.drawLine(-tic, yVal, 0, frameDims[2], yVal, 0);
+			ri.setColorValStroke(IRenderInterface.gui_Cyan,255);
+			ri.drawLine(-tic, yVal, 0, frameDims[2], yVal, 0);
 			//draw text for display
-			pa.setColorValStroke(IRenderInterface.gui_White,255);
-			pa.pushMatState();
-			pa.translate(-tic-10, yVal+5.0f,0);
-			pa.scale(1.4f);
-			pa.showText("0", 0,0);
-			pa.popMatState();
+			ri.setColorValStroke(IRenderInterface.gui_White,255);
+			ri.pushMatState();
+			ri.translate(-tic-10, yVal+5.0f,0);
+			ri.scale(1.4f);
+			ri.showText("0", 0,0);
+			ri.popMatState();
 		}
 		
 		if (drawZeroAxes[1]) {//draw y==0 axis
 			float xVal = zeroAxisVals[1];
 			//draw tick line @ x Val
-			pa.setColorValStroke(IRenderInterface.gui_White,255);
-			pa.drawLine(xVal, -tic, 0, xVal, tic, 0);	
+			ri.setColorValStroke(IRenderInterface.gui_White,255);
+			ri.drawLine(xVal, -tic, 0, xVal, tic, 0);	
 			//draw line to other side
-			pa.setColorValStroke(IRenderInterface.gui_Cyan,255);
-			pa.drawLine(xVal, -frameDims[3], 0, xVal, tic, 0);	
+			ri.setColorValStroke(IRenderInterface.gui_Cyan,255);
+			ri.drawLine(xVal, -frameDims[3], 0, xVal, tic, 0);	
 			//draw text for display
-			pa.setColorValStroke(IRenderInterface.gui_White,255);
-			pa.pushMatState();
-			pa.translate( xVal - 4.0f, tic+20.0f,0);
-			pa.scale(1.4f);
-			pa.showText("0", 0,0);
-			pa.popMatState();
+			ri.setColorValStroke(IRenderInterface.gui_White,255);
+			ri.pushMatState();
+			ri.translate( xVal - 4.0f, tic+20.0f,0);
+			ri.scale(1.4f);
+			ri.showText("0", 0,0);
+			ri.popMatState();
 		}		
-		pa.popMatState();
+		ri.popMatState();
 	}//
 	
 	//draw x and y axis values
 	//offset == 0 for axes on left, offset == frameDims[2] for offset on right
-	protected void drawAxes(IRenderInterface pa, float offset) {
-		pa.pushMatState();
-		pa.setColorValFill(IRenderInterface.gui_White,255);
+	protected void drawAxes(IRenderInterface ri, float offset) {
+		ri.pushMatState();
+		ri.setColorValFill(IRenderInterface.gui_White,255);
 		float yAxisTxtXOffset = offset -tic-myDistFuncHistVisMgr.frmBnds[0]+10 ,
 				yAxisTxtYOffset = (offset == 0.0)? 5.0f : -4.0f;
 		for (int idx = 0; idx <axisVals.length;++idx) {
 			float xVal = axisVals[idx][0];
 			String dispX = String.format(fmtXStr, axisDispVals[idx][0]); 
 			//draw tick line @ x Val
-			pa.setColorValStroke(IRenderInterface.gui_White,255);
-			pa.drawLine(xVal, -tic, 0, xVal, tic, 0);	
+			ri.setColorValStroke(IRenderInterface.gui_White,255);
+			ri.drawLine(xVal, -tic, 0, xVal, tic, 0);	
 			//draw line to other side
-			pa.setColorValStroke(IRenderInterface.gui_White,50);
-			pa.drawLine(xVal, -frameDims[3], 0, xVal, tic, 0);	
+			ri.setColorValStroke(IRenderInterface.gui_White,50);
+			ri.drawLine(xVal, -frameDims[3], 0, xVal, tic, 0);	
 			//draw text for display
-			pa.showText(dispX, xVal - 20.0f, tic+10.0f);
+			ri.showText(dispX, xVal - 20.0f, tic+10.0f);
 			if(idx%2==0) {//only draw every other y tick
 				float yVal = axisVals[idx][1];
 				String dispY = String.format(fmtYStr, axisDispVals[idx][1]);
 				//draw line @ y Val
-				pa.setColorValStroke(IRenderInterface.gui_White,255);
-				pa.drawLine(-tic + offset, yVal, 0, tic + offset, yVal, 0);
+				ri.setColorValStroke(IRenderInterface.gui_White,255);
+				ri.drawLine(-tic + offset, yVal, 0, tic + offset, yVal, 0);
 				//draw line to other side
-				pa.setColorValStroke(IRenderInterface.gui_White,50);
-				pa.drawLine(-tic, yVal, 0, frameDims[2], yVal, 0);
+				ri.setColorValStroke(IRenderInterface.gui_White,50);
+				ri.drawLine(-tic, yVal, 0, frameDims[2], yVal, 0);
 				//draw text for display
-				pa.showText(dispY, yAxisTxtXOffset, yVal+yAxisTxtYOffset);
+				ri.showText(dispY, yAxisTxtXOffset, yVal+yAxisTxtYOffset);
 			}
 		}
-		_drawZeroLines(pa);
-		pa.popMatState();
+		_drawZeroLines(ri);
+		ri.popMatState();
 	}//drawAxes
 	
-	public final void drawMe(IRenderInterface pa, boolean isMulti) {
-		pa.setFill(fillClr, fillClr[3]);
-		pa.setStroke(strkClr, strkClr[3]);
-		_drawCurve(pa,isMulti ? frameDims[2] : 0);
+	public final void drawMe(IRenderInterface ri, boolean isMulti) {
+		ri.setFill(fillClr, fillClr[3]);
+		ri.setStroke(strkClr, strkClr[3]);
+		_drawCurve(ri,isMulti ? frameDims[2] : 0);
 	}//drawMe
 
-	protected abstract void _drawCurve(IRenderInterface pa, float offset);
+	protected abstract void _drawCurve(IRenderInterface ri, float offset);
 	
 }//baseDistVisObj
 

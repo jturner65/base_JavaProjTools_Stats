@@ -10,7 +10,7 @@ import base_Render_Interface.IRenderInterface;
  *
  */
 public abstract class baseVisMgr {
-	public static IRenderInterface pa;
+	public static IRenderInterface ri;
 	//owning probability experiment
 	public final int ObjID;
 	private static int IDCnt = 0;
@@ -36,8 +36,8 @@ public abstract class baseVisMgr {
 			clr_grey = new int[] {100,100,100,255};	
 	
 	
-	public baseVisMgr(IRenderInterface _pa,float[] _startRect, String _name) {
-		pa = _pa;ObjID = IDCnt++; startRect = _startRect;name=_name;
+	public baseVisMgr(IRenderInterface _ri,float[] _startRect, String _name) {
+		ri = _ri;ObjID = IDCnt++; startRect = _startRect;name=_name;
 		initFlags();
 		setDispWidth(startRect[2]);
 	}//ctor
@@ -117,12 +117,12 @@ public abstract class baseVisMgr {
 
 	public void drawVis() {
 		if(!getFlag(isVisibleIDX)) {return;}
-		pa.pushMatState();
-		pa.translate(startRect[0], startRect[1],0);
-		pa.setFill(clr_white, clr_white[3]);
-		pa.showText(name, 0, 0);
+		ri.pushMatState();
+		ri.translate(startRect[0], startRect[1],0);
+		ri.setFill(clr_white, clr_white[3]);
+		ri.showText(name, 0, 0);
 		_drawVisIndiv();
-		pa.popMatState();			
+		ri.popMatState();			
 	}//drawVis
 	
 	protected abstract void _drawVisIndiv();

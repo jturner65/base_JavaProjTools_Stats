@@ -16,15 +16,15 @@ public class myFuncVisObj extends baseDistVisObj{
 	}
 	
 	@Override
-	protected void _drawCurve(IRenderInterface pa, float offset) {
-		pa.drawEllipse2D(dispVals[0][0], dispVals[0][1], 5.0f,5.0f);
+	protected void _drawCurve(IRenderInterface ri, float offset) {
+		ri.drawEllipse2D(dispVals[0][0], dispVals[0][1], 5.0f,5.0f);
 		for (int idx = 1; idx <dispVals.length;++idx) {	
 			//draw point 			
-			pa.drawEllipse2D(dispVals[idx][0], dispVals[idx][1], 5.0f,5.0f);
+			ri.drawEllipse2D(dispVals[idx][0], dispVals[idx][1], 5.0f,5.0f);
 			//draw line between points
-			pa.drawLine(dispVals[idx-1][0], dispVals[idx-1][1], 0, dispVals[idx][0], dispVals[idx][1], 0);
+			ri.drawLine(dispVals[idx-1][0], dispVals[idx-1][1], 0, dispVals[idx][0], dispVals[idx][1], 0);
 		}		
-		drawAxes(pa, 0);
+		drawAxes(ri, 0);
 	}//_drawCurve
 
 }//myFuncVisObj
