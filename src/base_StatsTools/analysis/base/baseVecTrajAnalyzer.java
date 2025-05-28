@@ -52,7 +52,7 @@ public abstract class baseVecTrajAnalyzer extends baseAnalyzer {
 		for(int row=0;row<smryStrings.length;++row) {
 			if(smryStrings[row].get(mmntDispLabels[mmntDispLabels.length-1]).toLowerCase().contains("nan")) {continue;}
 			ri.pushMatState();
-			showOffsetText_RightSideMenu(ri,ri.getClr(IRenderInterface.gui_Black, 255), ltrMult*.3f, smryStrings[row].get("summaryName"));
+			showOffsetText_RightSideMenu(ri,ri.getClr(IRenderInterface.gui_Black, 255), smryStrings[row].get("summaryName"));
 			for(int i=0;i<mmntDispLabels.length;++i) {
 				showOffsetText_RightSideMenuAbs(ri, ri.getClr(IRenderInterface.gui_DarkBlue, 255), ltrMult*3.5f, smryStrings[row].get(mmntDispLabels[i]));
 			}			

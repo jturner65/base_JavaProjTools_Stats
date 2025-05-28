@@ -59,7 +59,7 @@ public class floatTrajAnalyzer extends baseAnalyzer {
 		myProbSummary_Flts smry = ((myProbSummary_Flts)smryRaw);
 		TreeMap<String,String> smryStrings = smry.summaryStringAra("A");
 		ri.pushMatState();
-		showOffsetText_RightSideMenu(ri,ri.getClr(IRenderInterface.gui_Black, 255), ltrMult*.3f, smryStrings.get("summaryName"));
+		showOffsetText_RightSideMenu(ri,ri.getClr(IRenderInterface.gui_Black, 255), smryStrings.get("summaryName"));
 		for(int i=0;i<mmntDispLabels.length;++i) {
 			showOffsetText_RightSideMenuAbs(ri, ri.getClr(IRenderInterface.gui_DarkBlue, 255), ltrMult*3.5f, smryStrings.get(mmntDispLabels[i]));
 		}			

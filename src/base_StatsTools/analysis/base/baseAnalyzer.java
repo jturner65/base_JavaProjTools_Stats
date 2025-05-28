@@ -53,13 +53,13 @@ public abstract class baseAnalyzer {
 		ri.translate(dist, 0.0f,0.0f);	
 	}
 	
-	protected final void showOffsetText_RightSideMenu(IRenderInterface ri, int[] tclr, float mult,  String txt) {
+	protected final void showOffsetText_RightSideMenu(IRenderInterface ri, int[] tclr, String txt) {
 		ri.setFill(tclr,tclr[3]);ri.setStroke(tclr,tclr[3]);
 		ri.showText(txt,0.0f,0.0f,0.0f);
-		ri.translate(txt.length()*mult, 0.0f,0.0f);		
+		ri.translate(ri.getTextWidth(txt)*1.1f, 0.0f,0.0f);		
 	}
 	protected void drawSingleMinMaxTxt(IRenderInterface ri, int clrLabel, String txt, float ltrMult) {
-		showOffsetText_RightSideMenu(ri,ri.getClr(clrLabel, 255),1.4f* ltrMult, txt);			
+		showOffsetText_RightSideMenu(ri,ri.getClr(clrLabel, 255), txt);			
 	}
 	
 	
@@ -68,7 +68,7 @@ public abstract class baseAnalyzer {
 		float yDisp = trajWinDims[3];
 		ri.pushMatState();		
 		ri.translate(5.0f, yDisp, 0.0f);
-			showOffsetText_RightSideMenu(ri,ri.getClr(IRenderInterface.gui_Black, 255), 6.0f, name);
+			showOffsetText_RightSideMenu(ri,ri.getClr(IRenderInterface.gui_Black, 255), name);
 		ri.popMatState();
 		ri.pushMatState();
 			ri.translate(5.0f, 2*yDisp, 0.0f);			
@@ -92,7 +92,7 @@ public abstract class baseAnalyzer {
 		float[] graphRect = new float[] {10.0f,10.0f,trajWinDims[0]-20.0f,(trajWinDims[1]/(1.0f*summaries.length + 1))-20.0f};
 		ri.pushMatState();		
 		ri.translate(5.0f, yDisp, 0.0f);
-			showOffsetText_RightSideMenu(ri,ri.getClr(IRenderInterface.gui_Black, 255), 6.0f, name);
+			showOffsetText_RightSideMenu(ri,ri.getClr(IRenderInterface.gui_Black, 255), name);
 		ri.popMatState();
 		ri.pushMatState();
 			ri.translate(5.0f, 2*yDisp, 0.0f);			
@@ -113,7 +113,7 @@ public abstract class baseAnalyzer {
 		for(int i=0;i<summaries.length;++i) {		//per summary - single summary for pos, vel, accel, jerk, etc of each point
 			//title of each summary 
 			ri.pushMatState();
-				showOffsetText_RightSideMenu(ri,ri.getClr(IRenderInterface.gui_Black, 255),1.4f* mult, statDispLabels[i]);
+				showOffsetText_RightSideMenu(ri,ri.getClr(IRenderInterface.gui_Black, 255), statDispLabels[i]);
 				for(int j=0;j<mmntDispLabels.length;++j) {		showOffsetText_RightSideMenuAbs(ri,ri.getClr(IRenderInterface.gui_DarkBlue, 255), mult*3.5f, mmntDispLabels[j]);}
 			ri.popMatState();			
 			ri.translate(0.0f,txtLineYDisp,0.0f);
@@ -139,7 +139,7 @@ public abstract class baseAnalyzer {
 		for(int i=0;i<summaries.length;++i) {		//per summary - single summary for pos, vel, accel, jerk, etc of each point
 			//title of each summary graph 
 			ri.pushMatState();
-				showOffsetText_RightSideMenu(ri,ri.getClr(IRenderInterface.gui_Black, 255),1.0f* mult, statDispLabels[i]);		
+				showOffsetText_RightSideMenu(ri,ri.getClr(IRenderInterface.gui_Black, 255), statDispLabels[i]);		
 				drawSingleSmryGraphMinMaxLbls(ri, i, mult);
 			ri.popMatState();			
 			ri.translate(0.0f,txtLineYDisp,0.0f);		
