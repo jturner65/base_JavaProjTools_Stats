@@ -28,7 +28,7 @@ public class myProbSummary_ptOrVec extends baseProbSummary {
 		y_Idx = 1,
 		z_Idx = 2,
 		mag_Idx = 3;		//only used if vector values
-	public static final String[] summaryNames = new String[] {"x","y","z","m"};
+	public static final String[] summaryNames = new String[]{"x","y","z","m"};
 	/**
 	 * 
 	 * @param _ptVals

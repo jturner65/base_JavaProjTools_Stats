@@ -39,7 +39,7 @@ public abstract class baseProbSummary {
 	//# of moments actually specified, not counting derived moments
 	public int numMmntsGiven;
 	//label describing every moment
-	public static final String[] mmntLabels = new String[] {"Mean","STD","Skew","Kurtosis", "Variance","Excess Kurtosis"};
+	public static final String[] mmntLabels = new String[]{"Mean","STD","Skew","Kurtosis", "Variance","Excess Kurtosis"};
 	//# of moments being tracked, including duped moments - idx doesn't correspond necessarily to moment order
 	public static final int numTrackedMmnts = mmntLabels.length;
 	protected final String frmtStr = "% 10.2f";
